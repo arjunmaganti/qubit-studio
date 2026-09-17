@@ -1,0 +1,290 @@
+/**
+ * Curated from the BCQT materials database at commit
+ * dfe2d78629c3b2500946f1fc0bc9281a625445d2 (CC0-1.0).
+ * These are low-power resonator measurements, not interchangeable bulk constants.
+ */
+interface BaseMaterialRecord {
+  id: string;
+  label: string;
+  material: string;
+  substrate: string;
+  deposition: string;
+  treatment: string;
+  geometry: string;
+  reference: string;
+}
+
+export interface ResonatorMaterialRecord extends BaseMaterialRecord {
+  kind: 'resonator-loss';
+  category: 'superconducting film' | 'dielectric';
+  lowPowerLossMin: number;
+  lowPowerLossMax: number;
+}
+
+export interface DeviceStackRecord extends BaseMaterialRecord {
+  kind: 'device-stack';
+  layers: string[];
+  sourceUrl: string;
+  note: string;
+}
+
+export type MaterialRecord = ResonatorMaterialRecord | DeviceStackRecord;
+
+export const BCQT_SOURCE =
+  'https://github.com/Boulder-Cryogenic-Quantum-Testbed/materials/tree/dfe2d78629c3b2500946f1fc0bc9281a625445d2';
+
+export const MATERIAL_RECORDS: MaterialRecord[] = [
+  {
+    id: 'tin-sapphire-gao-2021',
+    kind: 'resonator-loss',
+    category: 'superconducting film',
+    label: 'TiN on sapphire — annealed MBE',
+    material: 'TiN',
+    substrate: 'Al₂O₃ (sapphire)',
+    deposition: 'MBE',
+    treatment: '300 °C anneal / RIE',
+    geometry: 'λ/2 hanger, w/g 10/6 µm',
+    lowPowerLossMin: 0.3e-6,
+    lowPowerLossMax: 0.3e-6,
+    reference: 'Gao et al. (2021)',
+  },
+  {
+    id: 'al-si-burnett-2018',
+    kind: 'resonator-loss',
+    category: 'superconducting film',
+    label: 'Al on silicon — HF / wet etched',
+    material: 'Al',
+    substrate: 'Si',
+    deposition: 'E-beam evaporation',
+    treatment: 'HF / wet etch',
+    geometry: 'λ/4 resonator',
+    lowPowerLossMin: 1.3e-6,
+    lowPowerLossMax: 1.3e-6,
+    reference: 'Burnett et al. (2018)',
+  },
+  {
+    id: 'al-si-untreated-earnest-2018',
+    kind: 'resonator-loss',
+    category: 'superconducting film',
+    label: 'Al on silicon — untreated',
+    material: 'Al',
+    substrate: 'Si',
+    deposition: 'E-beam evaporation',
+    treatment: 'No surface treatment / RIE',
+    geometry: 'λ/4, w/g 15/9 µm',
+    lowPowerLossMin: 3.1e-6,
+    lowPowerLossMax: 3.1e-6,
+    reference: 'Earnest et al. (2018)',
+  },
+  {
+    id: 'al-si-clean-anneal-earnest-2018',
+    kind: 'resonator-loss',
+    category: 'superconducting film',
+    label: 'Al on silicon — cleaned and annealed',
+    material: 'Al',
+    substrate: 'Si',
+    deposition: 'E-beam evaporation',
+    treatment: 'RCA-1 + HF + anneal / RIE',
+    geometry: 'λ/4, w/g 15/9 µm',
+    lowPowerLossMin: 1.2e-6,
+    lowPowerLossMax: 1.2e-6,
+    reference: 'Earnest et al. (2018)',
+  },
+  {
+    id: 'nb-si-nersisyan-2019',
+    kind: 'resonator-loss',
+    category: 'superconducting film',
+    label: 'Nb on silicon — PVD',
+    material: 'Nb',
+    substrate: 'Si',
+    deposition: 'PVD',
+    treatment: 'Various / RIE',
+    geometry: 'λ/4 resonator',
+    lowPowerLossMin: 0.8e-6,
+    lowPowerLossMax: 6e-6,
+    reference: 'Nersisyan et al. (2019)',
+  },
+  {
+    id: 'nbtin-si-barends-2010',
+    kind: 'resonator-loss',
+    category: 'superconducting film',
+    label: 'NbTiN on silicon — hydrogen-passivated',
+    material: 'NbTiN',
+    substrate: 'Si',
+    deposition: 'Sputter',
+    treatment: 'Hydrogen passivation / RIE',
+    geometry: 'λ/4, w/g 3/2–6/2 µm',
+    lowPowerLossMin: 3e-6,
+    lowPowerLossMax: 3e-6,
+    reference: 'Barends et al. (2010)',
+  },
+  {
+    id: 'ta-si-barends-2010',
+    kind: 'resonator-loss',
+    category: 'superconducting film',
+    label: 'Ta on silicon — sputtered',
+    material: 'Ta',
+    substrate: 'Si',
+    deposition: 'Sputter',
+    treatment: 'Unspecified / RIE',
+    geometry: 'λ/4, w/g 5/2 µm',
+    lowPowerLossMin: 30e-6,
+    lowPowerLossMax: 30e-6,
+    reference: 'Barends et al. (2010)',
+  },
+  {
+    id: 'nbn-tin-si-kim-2021',
+    kind: 'resonator-loss',
+    category: 'superconducting film',
+    label: 'NbN/TiN on silicon — sputtered',
+    material: 'NbN/TiN',
+    substrate: 'Si',
+    deposition: 'Sputter',
+    treatment: 'Unspecified / RIE',
+    geometry: 'λ/2 resonator',
+    lowPowerLossMin: 3.68e-6,
+    lowPowerLossMax: 3.68e-6,
+    reference: 'Kim et al. (2021)',
+  },
+  {
+    id: 're-sapphire-wang-2009',
+    kind: 'resonator-loss',
+    category: 'superconducting film',
+    label: 'Rhenium on sapphire — e-beam',
+    material: 'Re',
+    substrate: 'Al₂O₃ (sapphire)',
+    deposition: 'E-beam evaporation',
+    treatment: 'Unspecified / RIE',
+    geometry: 'λ/4, w/g 16/6.4–5/2 µm',
+    lowPowerLossMin: 1e-6,
+    lowPowerLossMax: 3e-6,
+    reference: 'Wang et al. (2009)',
+  },
+  {
+    id: 'al-sapphire-wang-2009',
+    kind: 'resonator-loss',
+    category: 'superconducting film',
+    label: 'Aluminum on sapphire — sputtered',
+    material: 'Al',
+    substrate: 'Al₂O₃ (sapphire)',
+    deposition: 'Sputter',
+    treatment: 'Unspecified / RIE',
+    geometry: 'λ/4, w/g 16/6.4–5/2 µm',
+    lowPowerLossMin: 3e-6,
+    lowPowerLossMax: 10e-6,
+    reference: 'Wang et al. (2009)',
+  },
+  {
+    id: 'a-ge-kopas-2021',
+    kind: 'resonator-loss',
+    category: 'dielectric',
+    label: 'Amorphous germanium — thermally evaporated',
+    material: 'a-Ge',
+    substrate: 'Measured dielectric film',
+    deposition: 'Thermal evaporation',
+    treatment: 'As reported by source',
+    geometry: 'CPW resonator',
+    lowPowerLossMin: 0.47e-5,
+    lowPowerLossMax: 1.1e-5,
+    reference: 'Kopas et al. (2021)',
+  },
+  {
+    id: 'al2o3-cho-2013',
+    kind: 'resonator-loss',
+    category: 'dielectric',
+    label: 'Epitaxial aluminum oxide — PLD',
+    material: 'Al₂O₃',
+    substrate: 'Measured dielectric film',
+    deposition: 'Pulsed-laser deposition',
+    treatment: 'As reported by source',
+    geometry: 'Lumped-element parallel-plate capacitor',
+    lowPowerLossMin: 3e-5,
+    lowPowerLossMax: 5e-5,
+    reference: 'Cho et al. (2013)',
+  },
+  {
+    id: 'sio2-oconnell-2008',
+    kind: 'resonator-loss',
+    category: 'dielectric',
+    label: 'Thermal silicon dioxide',
+    material: 'SiO₂',
+    substrate: 'Measured dielectric film',
+    deposition: 'Thermal oxidation',
+    treatment: 'As reported by source',
+    geometry: 'CPW resonator',
+    lowPowerLossMin: 30e-5,
+    lowPowerLossMax: 33e-5,
+    reference: 'O’Connell et al. (2008)',
+  },
+  {
+    id: 'a-sih-oconnell-2008',
+    kind: 'resonator-loss',
+    category: 'dielectric',
+    label: 'Hydrogenated amorphous silicon',
+    material: 'a-Si:H',
+    substrate: 'Measured dielectric film',
+    deposition: 'Not specified',
+    treatment: 'As reported by source',
+    geometry: 'LE PPC and CPW resonators',
+    lowPowerLossMin: 1e-5,
+    lowPowerLossMax: 13e-5,
+    reference: 'O’Connell et al. (2008)',
+  },
+  {
+    id: 'alox-deng-2014',
+    kind: 'resonator-loss',
+    category: 'dielectric',
+    label: 'Plasma-oxidized aluminum oxide',
+    material: 'AlOₓ',
+    substrate: 'Josephson-junction-style dielectric',
+    deposition: 'Plasma oxidation',
+    treatment: 'As reported by source',
+    geometry: 'Lumped-element overlap structure',
+    lowPowerLossMin: 140e-5,
+    lowPowerLossMax: 180e-5,
+    reference: 'Deng et al. (2014)',
+  },
+  {
+    id: 'microsoft-majorana-2-2026',
+    kind: 'device-stack',
+    label: 'Majorana 2 reference stack',
+    material: 'Pb',
+    substrate: 'GaSb-based heterostructure',
+    deposition: 'Atomically engineered semiconductor–superconductor stack',
+    treatment: 'Barriers and buffer layers; detailed process not modeled here',
+    geometry: 'Topological processor; not a transmon resonator',
+    reference: 'Microsoft Quantum, Majorana 2 (2026)',
+    layers: ['Pb', 'InAs', 'InAsSb', 'GaSb', 'barrier layers', 'buffer layer'],
+    sourceUrl: 'https://quantum.microsoft.com/en-us/insights/blogs/majorana-2-scalable-quantum-processor',
+    note: 'Microsoft-reported device composition. This record does not provide BCQT resonator loss or EJ/EC parameters.',
+  },
+];
+
+/** Curated elements, compounds, alloys, and established thin-film material systems. */
+export const MATERIAL_CATALOG = [
+  'Al',
+  'Al₂O₃ (sapphire)',
+  'AlOₓ',
+  'a-Ge',
+  'a-Si:H',
+  'B₄C',
+  'BN',
+  'GaSb',
+  'HfO₂',
+  'In',
+  'InAs',
+  'InAsSb',
+  'LaAlO₃',
+  'MgAl₂O₄',
+  'Nb',
+  'NbN',
+  'NbN/TiN',
+  'NbTiN',
+  'Pb',
+  'Re',
+  'Si',
+  'SiNₓ',
+  'SiO₂',
+  'Ta',
+  'TiN',
+] as const;

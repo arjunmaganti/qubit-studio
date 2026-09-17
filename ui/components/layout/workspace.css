@@ -1,0 +1,209 @@
+/* Self-hosted variable font; source and SIL OFL in public/fonts/instrument-sans. */
+@font-face {
+  font-family: 'Instrument Sans';
+  src: url('/fonts/instrument-sans/InstrumentSans-Variable.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+/* Cleaner instrument bench: task-based controls, neutral chrome, live readouts. */
+.product-shell {
+  --workspace-font: 'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: var(--workspace-font);
+  font-variant-numeric: tabular-nums;
+  --accent: #285ba4;
+  --accent-soft: #edf2fa;
+  --text: #23333e;
+  --text-2: #536b7c;
+  --text-3: #697d8c;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  grid-template-rows: 56px 50px minmax(330px, 1fr) auto;
+  grid-template-areas: 'header header' 'toolbar inspector' 'stage inspector' 'results results';
+}
+.product-shell .wave-header { background: #fff; gap: 22px; padding-inline: 24px; border-color: #d8e0e5; z-index: 20; }
+.product-shell .wave-brand { font-size: 18px; letter-spacing: -.5px; }
+.product-shell .wave-modes { gap: 18px; }
+.product-shell .wave-device { font-family: inherit; }
+.product-shell .workspace-ask { background: #edf2fa; color: #285ba4; border: 1px solid #b9cbea; border-radius: 4px; order: 2; }
+.product-shell .wave-toolbar { padding-inline: 20px; gap: 16px; background: #f8fafb; border-color: #d8e0e5; border-right: 1px solid #d8e0e5; }
+.product-shell .wave-toolbar .layout-popover>summary { border: 0; padding-inline: 0; }
+.product-shell .wave-view-switch { background: #e9eef2; border-color: #cdd7df; border-radius: 4px; }
+.product-shell .wave-view-switch button { min-width: 57px; padding: 6px 12px; }
+.product-shell .wave-view-switch button[aria-pressed=true] { color: #285ba4; }
+.product-shell .assembly-menu>div { left: auto; right: 0; }
+.product-shell .view-options>div>button { display: flex; gap: 8px; align-items: center; }
+.product-shell :is(button,summary,input):focus-visible { outline: 2px solid #537ab2; outline-offset: 3px; }
+.product-shell .wave-inspector { background: #fff; }
+.product-shell .layout-inspector { padding: 25px 24px 18px; }
+.product-shell .layout-editor { display: block; }
+.product-shell .layout-component-id { padding: 0; border: 0; background: none; color: #57708c; font-family: inherit; font-size: 10px; letter-spacing: .6px; }
+.product-shell .layout-editor h1 { color: #23333e; font-size: 21px; font-weight: 600; letter-spacing: -.5px; margin: 12px 0 9px; }
+.product-shell .layout-component-role { color: #5d7180; font-size: 13px; line-height: 1.6; min-height: 0; }
+.inspector-tabs { display: flex; gap: 25px; margin: 22px -24px 0; padding: 0 24px; border-bottom: 1px solid #d8e0e5; }
+.inspector-tabs button { border: 0; border-radius: 0; background: none; padding: 10px 0 13px; min-height: 44px; color: #647787; font-size: 13px; }
+.inspector-tabs button[aria-selected=true] { color: #285ba4; font-weight: 600; box-shadow: inset 0 -2px #285ba4; }
+.inspector-tabbody { padding-top: 24px; }
+.inspector-effect { color: #45678b; font-size: 12px; line-height: 1.6; margin: 0 0 24px; }
+.inspector-effect:before { content: ''; display: inline-block; width: 5px; height: 5px; background: currentColor; border-radius: 50%; margin-right: 7px; vertical-align: middle; }
+.inspector-effect.appearance { color: #715989; }
+.inspector-effect.geometry { color: #8a653b; }
+.product-shell .layout-primary-field { margin-top: 0; }
+.product-shell .layout-primary-field .field-head { gap: 5px; margin-bottom: 8px; }
+.product-shell .layout-primary-field .field-head label { color: #23333e; font-size: 14px; font-weight: 500; }
+.product-shell .layout-primary-field .field-head .sym { color: #64798a; font-size: 11px; }
+.product-shell .layout-primary-field .field-row { grid-template-columns: minmax(0,1fr) 50px; gap: 14px 0; }
+.product-shell .layout-primary-field .field-row .num { height: 46px; font-size: 22px; letter-spacing: 0; border-color: #b7c5d0; border-radius: 5px 0 0 5px; border-right: 0; color: #273b49; box-shadow: none; }
+.product-shell .layout-primary-field .field-row .unit { height: 46px; display: flex; align-items: center; justify-content: center; background: #fff; border: 1px solid #b7c5d0; border-left: 0; border-radius: 0 5px 5px 0; color: #64798a; }
+.product-shell .layout-primary-field .field-row input[type=range] { accent-color: #537ab2; }
+.product-shell .layout-field-bounds { color: #6a7c89; }
+.inspector-helper { font-size: 13px; color: #657887; line-height: 1.65; margin: 25px 0 0; }
+.product-shell .layout-editor-footer { margin-top: 26px; padding-top: 16px; border-color: #d8e0e5; display: block; }
+.product-shell .layout-editor-footer>span { display: none; }
+.product-shell .layout-editor-footer .tech { margin: 0; }
+.product-shell .layout-editor-footer summary { color: #4c6374; font-size: 12px; }
+.product-shell .layout-inspect-action { background: #f7f9fb!important; border: 1px solid #d8e0e5; color: #49677e; box-shadow: none; font-size: 12px; min-height: 36px; margin-top: 24px!important; max-width: none; }
+.product-shell .layout-inspect-action:hover { background: #edf2fa!important; }
+.product-shell .layout-solver { border-color: #e5eaee; font-size: 12px; }
+.product-shell .inspector-tabbody .geometry-editor { margin-top: 0; }
+.product-shell .hardware-caption strong { font-size: 15px; letter-spacing: -.2px; }
+.product-shell .hardware-caption small { font-size: 11px; }
+.product-shell .hardware-status { background: #eeede9; border: 0; }
+.product-shell .wave-results { border-top: 1px solid #bdcbd6; }
+.product-shell .layout-results { background: #fff; color: #23333e; --text: #23333e; --text-2: #536b7c; --text-3: #697d8c; --line: #d8e0e5; --surface: #fff; --surface-2: #f6f8fa; }
+.product-shell .layout-results-toolbar { color: #536b7c; border-color: #e4e9ed; padding: 10px 24px; }
+.results-identity { display: flex; align-items: center; gap: 12px; }
+.results-identity strong { color: #23333e; font-size: 13px; font-weight: 600; }
+.results-identity>span { font-size: 11px; }
+.results-identity .is-current { color: #47735c; }
+.results-identity .is-current:before { content: '●'; font-size: 9px; margin-right: 5px; }
+.product-shell .layout-results-toolbar>button { color: #49677e; }
+.product-shell .results-actions>summary { font-size: 11px; padding: 3px 7px; border: 0; }
+.product-shell .results-actions>div { left: auto; right: 0; top: 100%; width: 210px; }
+.product-shell .results-actions>div button { display: flex; gap: 8px; align-items: center; font-size: 12px; }
+.product-shell .layout-result-metrics { padding: 15px 12px 12px; }
+.product-shell .layout-result-metric { display: block; padding-inline: 16px; }
+.product-shell .layout-result-metric+.layout-result-metric { border-color: #e1e7ec; }
+.product-shell .layout-result-label { display: block; color: #536b7c; font-size: 12px; }
+.product-shell .layout-result-value { display: block; color: #23333e; font-size: 27px; font-weight: 500; letter-spacing: -.6px; }
+.product-shell .layout-result-metric:hover { background: #f6f8fb; }
+.product-shell .layout-result-metric.is-selected { background: #edf2fa; box-shadow: inset 0 -2px #537ab2; }
+.product-shell .layout-result-comparison { color: #426793; border: 0; padding: 0; margin-top: 5px; }
+.product-shell .layout-result-comparison small,.product-shell .layout-result-note { color: #64798a; }
+.product-shell .layout-results-footnote { color: #697d8c; padding: 0 28px 12px; }
+.product-shell .layout-results:not(.is-expanded) .layout-results-footnote { display: none; }
+.product-shell .layout-expanded-results { border-color: #d8e0e5; background: #fff; }
+/* Override legacy system/mono control declarations, not KaTeX or scene SVG text.
+   Keep --mono intact for code and the drawing's technical artwork labels. */
+.product-shell :is(button, input, select, textarea, output, summary):not(.katex, .katex *),
+.product-shell :is(.field-row .num, .field-row .unit, .layout-field-bounds, .layout-result-value,
+  .layout-result-comparison, .layout-result-note, .kv dd, .compare-row span,
+  .geometry-preview strong, .current-material strong, .current-material b,
+  .hardware-caption > span, .hardware-layer-materials button strong,
+  .components-menu > div > button small, .history-popover button span,
+  .layout-view-caption, .layout-inspection-caption, .layout-locator span,
+  .layout-pad-focus > span, .layout-bond-count, .layout-focus-banner,
+  .layout-display-panel, .layout-display-panel p, .layout-display-part small):not(.katex, .katex *) {
+  font-family: var(--workspace-font);
+  font-variant-numeric: tabular-nums;
+}
+/* Material browser is portalled outside the workspace shell. */
+[data-slot=dialog-content].material-dialog {
+  font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Friendly control chrome only: no overrides for artwork, viewport fills,
+   lighting, layer opacity, picking targets, or the assembly surface. */
+.product-shell .product-layout {
+  --inspection-border: #496874;
+  --inspection-border-active: #81adbd;
+}
+.product-shell .product-layout :is(.layout-canvas-button, .layout-focus-banner button,
+  .layout-material-legend .layout-display-trigger, .layout-display-panel select,
+  .layout-saved-views input, .layout-display-reset, .layout-saved-views form button) {
+  border-color: var(--inspection-border);
+  border-radius: 6px;
+}
+.product-shell .product-layout .layout-camera-controls button { border-radius: 5px; }
+.product-shell .product-layout .layout-camera-controls .layout-display-mode { border-radius: 6px; }
+.product-shell .product-layout .layout-pad-focus { border-radius: 7px; border-color: #3e5e69; }
+.product-shell .product-layout .layout-pad-focus button { border-radius: 4px; }
+.product-shell .product-layout .layout-annotations button { border-radius: 5px; border-color: var(--inspection-border); }
+.product-shell .product-layout .layout-annotations button.selected { border-color: var(--inspection-border-active); }
+.product-shell .product-layout .layout-display-panel {
+  border-color: #52717e;
+  border-radius: 10px;
+  padding: 14px;
+  box-shadow: 0 8px 24px #0004;
+}
+.product-shell .product-layout .layout-display-row { border-color: #2e4c58; border-radius: 4px; }
+.product-shell .product-layout .layout-display-column-head { border-color: #3c5965; }
+.product-shell .product-layout .layout-display-panel select,
+.product-shell .product-layout .layout-saved-views input { padding: 6px; }
+.product-shell .product-layout :is(.layout-display-trigger, .layout-canvas-button,
+  .layout-focus-banner button, .layout-display-reset, .layout-saved-views form button):hover:not(:disabled) {
+  border-color: var(--inspection-border-active);
+}
+.product-shell .product-layout :is(button, input, select, summary):focus-visible {
+  outline: 2px solid #9ec9db;
+  outline-offset: 2px;
+}
+@container (max-width: 400px) {
+  .product-shell .product-layout .layout-display-panel { padding: 10px; }
+}
+
+@media (min-width: 1081px) {
+  .product-shell .wave-results:not(:has(.is-expanded)) { overflow: visible; position: relative; z-index: 15; }
+  .product-shell .layout-results:not(.is-expanded) { display: grid; grid-template-columns: 110px minmax(0,1fr) auto auto; align-items: center; gap: 14px; padding: 18px 24px; min-height: 116px; }
+  .product-shell .layout-results:not(.is-expanded) .layout-results-toolbar { display: contents; }
+  .product-shell .layout-results:not(.is-expanded) .results-identity { grid-column: 1; grid-row: 1; flex-direction: column; align-items: flex-start; gap: 5px; }
+  .product-shell .layout-results:not(.is-expanded) .layout-results-toolbar>.spacer { display: none; }
+  .product-shell .layout-results:not(.is-expanded) .results-actions { grid-column: 3; grid-row: 1; }
+  .product-shell .layout-results:not(.is-expanded) .results-actions>div { top: auto; bottom: calc(100% + 10px); }
+  .product-shell .layout-results:not(.is-expanded) .results-expand { grid-column: 4; grid-row: 1; }
+  .product-shell .layout-results:not(.is-expanded) .layout-result-metrics { grid-column: 2; grid-row: 1; padding: 0; }
+  .product-shell .layout-results:not(.is-expanded) .layout-result-state { grid-column: 1/-1; grid-row: 2; }
+  .product-shell .layout-results:not(.is-expanded) .layout-result-value { font-size: 25px; }
+}
+@media (max-width: 1200px) and (min-width: 1081px) {
+  .product-shell { grid-template-columns: minmax(0,1fr) 336px; }
+  .product-shell .wave-header { gap: 16px; }
+  .product-shell .wave-toolbar { gap: 12px; padding-inline: 14px; }
+}
+@media (max-width: 1080px) {
+  .product-shell { grid-template-columns: 1fr; grid-template-rows: auto auto minmax(410px,55dvh) auto auto; grid-template-areas: 'header' 'toolbar' 'stage' 'inspector' 'results'; }
+  .product-shell .wave-header { flex-wrap: wrap; padding-block: 10px; gap: 12px 18px; }
+  .product-shell .wave-toolbar { border-right: 0; }
+  .product-shell .wave-inspector { border-top: 1px solid #d8e0e5; }
+  .product-shell .inspector-tabbody { max-width: 580px; }
+  .product-shell .layout-results-toolbar { position: relative; }
+}
+@media (max-width: 700px) {
+  .product-shell .wave-header { padding-inline: 16px; }
+  .product-shell .wave-brand { font-size: 17px; }
+  .product-shell .wave-header .badge { margin-left: auto; }
+  .product-shell .wave-toolbar { gap: 8px 12px; padding: 8px 12px; }
+  .product-shell .wave-view-switch button { min-width: 48px; padding-inline: 9px; }
+  .product-shell .wave-toolbar .assembly-menu { margin-left: auto; }
+  .product-shell .layout-result-metrics { grid-template-columns: repeat(3,minmax(0,1fr)); padding: 12px; }
+  .product-shell .layout-result-metric { padding: 0 8px; }
+  .product-shell .layout-result-metric+.layout-result-metric { border-top: 0; border-left: 1px solid #e1e7ec; }
+  .product-shell .layout-result-label { font-size: 10px; min-height: 30px; }
+  .product-shell .layout-result-value { font-size: 19px; white-space: normal; }
+  .product-shell .layout-result-comparison { font-size: 10px; }
+  .product-shell .layout-results-toolbar { padding-inline: 18px; }
+  .product-shell .layout-results-toolbar .spacer { display: block; }
+}
+
+/* Exact requirement entry accompanies the teaching slider. */
+.product-shell .goal-primary input[type=number] { width:100%; padding:7px 9px; border:1px solid #b7c5d0; border-radius:5px; background:#fff; color:#23333e; }
+.product-shell .goal-primary input[aria-invalid=true] { border-color:#b33b30; }
+.tradeoff-evaluated-toggle { display:flex; align-items:center; gap:7px; padding:8px 0; font-size:11px; }
+.tradeoff-evaluated-toggle input { width:auto; }
+.tradeoff-legend { flex-wrap:wrap; }
+.search-baseline-assessment { border:1px solid #d8e0e5; border-radius:6px; padding:10px; margin-top:10px; font-size:12px; }
+.search-baseline-assessment p { margin:7px 0 0; }
+
+/* Expanded details retain the next transition and all four metric explanations. */
+.product-shell .layout-expanded-results .summary-grid { display:grid; }

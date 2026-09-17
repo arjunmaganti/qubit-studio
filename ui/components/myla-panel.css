@@ -1,0 +1,568 @@
+.myla-panel {
+  position: fixed;
+  z-index: 80;
+  top: var(--myla-top, 96px);
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  width: min(400px, calc(100vw - 24px));
+  max-height: calc(100dvh - var(--myla-top, 96px) - var(--myla-bottom, 24px));
+  overflow: hidden;
+  border: 1px solid #dce1e8;
+  border-radius: 14px;
+  background: #fff;
+  color: #17233c;
+  box-shadow: 0 18px 52px rgb(23 35 60 / 15%), 0 3px 12px rgb(23 35 60 / 6%);
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: left;
+  isolation: isolate;
+  animation: myla-panel-enter 160ms ease-out;
+}
+
+.myla-panel *,
+.myla-panel *::before,
+.myla-panel *::after {
+  box-sizing: border-box;
+}
+
+.myla-panel .myla-panel-header {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 17px 18px 12px 22px;
+}
+
+.myla-panel .myla-panel-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #142443;
+  font-size: 18px;
+  font-weight: 650;
+  letter-spacing: -0.035em;
+  line-height: 1.2;
+}
+
+.myla-panel .myla-panel-brand > svg {
+  width: 31px;
+  height: 27px;
+  flex: none;
+}
+
+.myla-panel .myla-panel-brand h2 {
+  margin: 0;
+  font: inherit;
+  color: inherit;
+}
+
+.myla-panel .myla-panel-close {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: #748092;
+  transition: color 120ms ease, background-color 120ms ease;
+}
+
+.myla-panel .myla-panel-close:hover {
+  background: #f0f3f7;
+  color: #17233c;
+}
+
+.myla-panel .myla-panel-close svg {
+  width: 17px;
+  height: 17px;
+}
+
+.myla-panel .myla-panel-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd2dc transparent;
+  padding: 2px 22px 0;
+  overflow-wrap: anywhere;
+}
+
+.myla-panel .myla-panel-context {
+  margin: 0 0 15px;
+  color: #566276;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.myla-panel .myla-panel-context .katex {
+  color: inherit;
+}
+
+.myla-panel .myla-panel-note {
+  margin: 0;
+  padding: 0;
+}
+
+.myla-panel .myla-panel-note + .myla-panel-note {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e0e5ec;
+}
+
+.myla-panel .myla-panel-note-label {
+  margin-bottom: 7px;
+  color: #788497;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.myla-panel .myla-panel-note h3,
+.myla-panel .myla-panel-answer h3 {
+  margin: 0 0 7px;
+  color: #132440;
+  font-size: 20px;
+  font-weight: 650;
+  letter-spacing: -0.025em;
+  line-height: 1.3;
+}
+
+.myla-panel .myla-panel-note p,
+.myla-panel .myla-panel-answer p {
+  margin: 0 0 12px;
+  color: #445064;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.myla-panel .myla-panel-note p:last-child {
+  margin-bottom: 0;
+}
+
+.myla-panel .myla-panel-visual {
+  margin: 20px 0 14px;
+}
+
+.myla-panel .myla-panel-visual > svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 176px;
+  overflow: visible;
+}
+
+.myla-panel .myla-panel-visual figcaption {
+  margin-top: 10px;
+  color: #778193;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.myla-panel .myla-panel-disclosure {
+  border-top: 1px solid #e0e5ec;
+}
+
+.myla-panel .myla-panel-disclosure > summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 11px 0;
+  color: #253551;
+  font-size: 12px;
+  font-weight: 550;
+  line-height: 1.5;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+
+.myla-panel .myla-panel-disclosure > summary::-webkit-details-marker {
+  display: none;
+}
+
+.myla-panel .myla-panel-disclosure > summary:hover {
+  color: #315fbd;
+}
+
+.myla-panel .myla-panel-disclosure > summary > svg {
+  width: 15px;
+  height: 15px;
+  flex: none;
+  transform: rotate(-90deg);
+  transition: transform 120ms ease;
+}
+
+.myla-panel .myla-panel-disclosure[open] > summary > svg {
+  transform: rotate(0deg);
+}
+
+.myla-panel .myla-panel-math {
+  padding: 0 0 15px 23px;
+  color: #283852;
+}
+
+.myla-panel .myla-panel-math > .myla-math,
+.myla-panel .myla-panel-math > .math-text {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin: 0 0 12px;
+  padding: 3px 0;
+  font-size: 19px;
+}
+
+.myla-panel .myla-panel-math .katex-display {
+  margin: 0;
+  text-align: left;
+}
+
+.myla-panel .myla-panel-math .katex-display > .katex {
+  text-align: left;
+}
+
+.myla-panel .myla-panel-math .katex {
+  color: #192c4b;
+}
+
+.myla-panel .myla-panel-math dl {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 5px 13px;
+  margin: 0 0 12px;
+  color: #5e697c;
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.myla-panel .myla-panel-math dl > div {
+  display: contents;
+}
+
+.myla-panel .myla-panel-math dt,
+.myla-panel .myla-panel-math dd {
+  margin: 0;
+}
+
+.myla-panel .myla-panel-topics {
+  padding-bottom: 12px;
+}
+
+.myla-panel .myla-panel-topics label {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 6px 0;
+  color: #445064;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.myla-panel .myla-panel-topics input[type="checkbox"] {
+  flex: none;
+  width: 15px;
+  height: 15px;
+  margin: 2px 0 0;
+  accent-color: #335fbd;
+}
+
+.myla-panel .myla-panel-clear {
+  margin-top: 7px;
+  padding: 4px 0;
+  border: 0;
+  border-radius: 3px;
+  background: transparent;
+  color: #315fbd;
+  font-size: 11px;
+}
+
+.myla-panel .myla-panel-clear:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.myla-panel .myla-panel-answer {
+  margin: 4px 0 17px;
+  padding: 16px 0 0;
+  border-top: 1px solid #e0e5ec;
+}
+
+.myla-panel .myla-panel-answer h3 {
+  font-size: 15px;
+}
+
+.myla-panel .myla-panel-error {
+  margin: 0 0 14px;
+  padding: 10px 12px;
+  border: 1px solid #f0d5d2;
+  border-radius: 8px;
+  background: #fff6f5;
+  color: #a03d37;
+  font-size: 12px;
+}
+
+.myla-panel .myla-panel-footer {
+  flex: none;
+  padding: 0 22px 18px;
+  background: #fff;
+}
+
+.myla-panel .myla-panel-provenance {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 11px 0;
+  border-top: 1px solid #e0e5ec;
+  color: #778193;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.myla-panel .myla-panel-provenance strong {
+  color: #41506a;
+  font-weight: 550;
+}
+
+.myla-panel .myla-panel-status {
+  display: grid;
+  grid-template-columns: 7px minmax(0, 1fr);
+  align-items: flex-start;
+  gap: 3px 8px;
+  padding: 9px 0 12px;
+  border-top: 1px solid #e7ebf0;
+  color: #5a667a;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.myla-panel .myla-panel-status > span {
+  grid-column: 2;
+  color: #788497;
+}
+
+.myla-panel .myla-panel-status::before {
+  content: "";
+  flex: none;
+  width: 7px;
+  height: 7px;
+  margin-top: 4px;
+  border-radius: 50%;
+  background: #8491a3;
+}
+
+.myla-panel .myla-panel-status[data-state="ready"]::before {
+  background: #43a965;
+}
+
+.myla-panel .myla-panel-status[data-state="updating"]::before {
+  background: #8994a5;
+}
+
+.myla-panel .myla-panel-status[data-state="error"]::before {
+  background: #db6262;
+}
+
+.myla-panel .myla-panel-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.myla-panel .myla-panel-primary,
+.myla-panel .myla-panel-cancel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 39px;
+  padding: 9px 12px;
+  border: 1px solid #335cb4;
+  border-radius: 7px;
+  background: #365fbd;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 550;
+  line-height: 1.45;
+  transition: background-color 120ms ease, border-color 120ms ease;
+}
+
+.myla-panel .myla-panel-primary:hover:not(:disabled) {
+  border-color: #284fa4;
+  background: #2c53ae;
+}
+
+.myla-panel .myla-panel-primary:disabled,
+.myla-panel .myla-panel-cancel:disabled {
+  border-color: #e3e7ed;
+  background: #edf0f4;
+  color: #909bab;
+  cursor: not-allowed;
+}
+
+.myla-panel .myla-panel-cancel {
+  min-height: 31px;
+  padding: 5px 12px;
+  border-color: #dce2eb;
+  background: #fff;
+  color: #57647a;
+  font-size: 12px;
+}
+
+.myla-panel .myla-panel-cancel:hover:not(:disabled) {
+  background: #f4f6f9;
+}
+
+.myla-panel :focus-visible {
+  outline: 2px solid #4075dc;
+  outline-offset: 3px;
+}
+
+.myla-panel summary:focus-visible {
+  border-radius: 3px;
+  outline-offset: -2px;
+}
+
+@keyframes myla-panel-enter {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+  .myla-panel {
+    right: 12px;
+  }
+
+  .myla-panel .myla-panel-header {
+    padding-left: 18px;
+    padding-right: 14px;
+  }
+
+  .myla-panel .myla-panel-body {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+
+  .myla-panel .myla-panel-footer {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+}
+
+@media (max-height: 560px) {
+  .myla-panel {
+    top: 12px;
+    max-height: calc(100dvh - 24px);
+  }
+
+  .myla-panel .myla-panel-header {
+    padding-top: 10px;
+    padding-bottom: 7px;
+  }
+
+  .myla-panel .myla-panel-footer {
+    padding-bottom: 12px;
+  }
+
+  .myla-panel .myla-panel-provenance {
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+}
+
+@media (min-height: 561px) and (max-height: 800px) {
+  .myla-panel .myla-panel-header {
+    padding-top: 9px;
+    padding-bottom: 9px;
+  }
+
+  .myla-panel .myla-panel-context {
+    margin-bottom: 10px;
+  }
+
+  .myla-panel .myla-panel-note h3 {
+    font-size: 18px;
+    margin-bottom: 6px;
+  }
+
+  .myla-panel .myla-panel-note p,
+  .myla-panel .myla-panel-answer p {
+    line-height: 1.5;
+  }
+
+  .myla-panel .myla-panel-context { margin-bottom: 8px; }
+
+  .myla-panel .myla-panel-disclosure > summary { min-height: 36px; padding-block: 8px; }
+
+  .myla-panel .myla-panel-visual {
+    margin-top: 12px;
+    margin-bottom: 8px;
+  }
+
+  .myla-panel .myla-panel-visual > svg {
+    max-height: 90px;
+  }
+
+  .myla-panel .myla-panel-visual figcaption {
+    margin-top: 6px;
+  }
+
+  .myla-panel .myla-panel-footer {
+    padding-bottom: 12px;
+  }
+
+  .myla-panel .myla-panel-provenance {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2px 8px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 10px;
+    line-height: 1.4;
+  }
+
+  .myla-panel .myla-panel-status {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    font-size: 10px;
+    line-height: 1.4;
+  }
+
+  .myla-panel .myla-panel-status::before {
+    margin-top: 3px;
+  }
+
+  .myla-panel .myla-panel-primary {
+    min-height: 40px;
+  }
+
+  .myla-panel .myla-panel-topics {
+    max-height: 200px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: #cbd2dc transparent;
+    padding-right: 5px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .myla-panel {
+    animation: none;
+  }
+
+  .myla-panel *,
+  .myla-panel *::before,
+  .myla-panel *::after {
+    transition: none;
+  }
+}

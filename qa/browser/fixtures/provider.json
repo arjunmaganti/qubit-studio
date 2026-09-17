@@ -1,0 +1,18 @@
+{
+  "description": "Explicitly mocked provider responses. No Gemini credentials, SDK or provider network calls.",
+  "success": {
+    "title": "MOCK response",
+    "body": "Controlled integration fixture. No live provider was called."
+  },
+  "retry": {
+    "title": "MOCK retry",
+    "body": "A deliberate successful retry."
+  },
+  "obsolete": {
+    "title": "OBSOLETE MOCK",
+    "body": "This must never reattach after cancellation."
+  },
+  "unavailable": {
+    "error": "Controlled unavailable response"
+  }
+}

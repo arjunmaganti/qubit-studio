@@ -1,0 +1,33 @@
+## Acceptance checklist (implement in this order)
+
+1. **First paint is a loaded CAD workspace, not a wizard.** On `localhost:3100`, the transmon is already on a **neutral gray/white canvas**. One optional hint only (dismissible). No calibration gate, no “enter device params to start,” no sci-fi HUD.
+2. **Same-origin proxy only.** Browser never talks to `:8000`. `POST /evaluate` goes through the Next rewrite/proxy. Network tab shows same origin. If the proxy or backend is down: **no numbers, no charts, no “typical” defaults** — explicit disconnected/error state.
+3. **Controls match the API, and only the API.** Editable: `ej_ghz`, `ec_ghz` (independent; **no f01 lock**), `ng`. `ncut` is progressive/advanced, default `30`. Payload is `{ej_ghz, ec_ghz, ng, ncut}`. Do not send extra physics fields.
+4. **Sliders + exact inputs, debounced.** Typing `15` / `0.3` and dragging both work. Edits debounce. While a request is in flight for a newer edit, previous values stay visible and are labeled **Updating** — they are not blanked and not replaced by a spinner-only void.
+5. **Stale responses cannot win.** Rapid slider motion: only the latest request’s body may become “current.” Older responses are dropped. Observable: last displayed `ej_ghz`/`ec_ghz`/`ng`/`ncut` **equal the last completed request’s input**, not an intermediate one.
+6. **Render the real contract, including nulls.** Show `f01_ghz`, `f12_ghz`, `alpha_mhz` (signed), `anharmonicity_mhz` (negative of alpha — do not invent a third anharmonicity). `dispersion_khz` is a **number or null**. If `dispersion_status === "below_reporting_floor"`, show that status + `dispersion_upper_khz` / `dispersion_resolution_khz=0.001` — **do not coerce null to `0`**. `charge_response` is **101** `{ng, f01_ghz}` points or the view is empty/error, not interpolated fake points.
+7. **Pin baseline only from a completed current state.** Pin is disabled while **Updating** or disconnected. After pin: baseline **parameter snapshot** (`ej_ghz`, `ec_ghz`, `ng`, `ncut`) is frozen. Deltas (`Δf01`, `Δα`, etc.) compare live completed results against that snapshot. Changing sliders after pin does not rewrite the snapshot.
+8. **Three.js object is fully orbitable.** Orbit/pan/zoom with no gimbal lock at poles; no auto-spin. Parts are selectable: **junction**, **effective capacitor**, **illustrative substrate**. Selection highlights the mesh.
+9. **SVG schematic stays in lockstep.** Split view: orbiting does not desync selection. Click part in 3D **or** SVG **or** tree → same part selected in all three + inspector. Hover may preview; click is the source of truth.
+10. **Inspector is CAD, not a materials lab.** Names/roles only. Appearance is illustrative. Copy must say the model is **simplified, not a real-world predictor**. No εr, Jc, film stack, or “physics materials.”
+11. **Exploded assembly is optional and view-only.** If present: toggle only, no extra solver, no new params. Fine to ship without it.
+12. **`/search` is out of scope.** Do not wire, mock, or block on it.
+
+---
+
+## 5 biggest traps (each with a pass condition)
+
+**1. Stale `/evaluate` overwrites the live edit.**  
+Pass: Burst-change EJ then park on `16`. After all network settles, inspector params **and** `f01_ghz` match a single completed response whose input `ej_ghz === 16`. An earlier `15.2` response arriving late does not flash in. Out-of-date readouts stay labeled **Updating** until the matching response lands.
+
+**2. Pinning an in-flight or disconnected state.**  
+Pass: During **Updating**, Pin is disabled / no-ops. Disconnect the proxy, Pin does nothing and no baseline appears. After a **completed** evaluate, Pin stores that param snapshot; further slider moves leave baseline params unchanged; deltas only update when a **new completed** result arrives.
+
+**3. Null dispersion becomes `0 kHz` (or a drawn point at origin).**  
+Pass: Fixture/backend returns `dispersion_khz: null`, `dispersion_status: "below_reporting_floor"`. UI shows the status and upper/floor copy, **no `0`**, no chart point at 0. A later `resolved` numeric value displays as a number. Never show a cached number from a previous param set while **Updating**.
+
+**4. Fake CAD / fake physics when the backend is gone.**  
+Pass: Kill `:8000` (or break the rewrite). 3D/SVG/tree still render as geometry. **Every calculated field is empty or error** — no leftover `f01`, no placeholder spectrum, no 101-point spline invented client-side. Reconnect + one successful evaluate restores numbers. Materials never get a properties table.
+
+**5. Selection / layout desync (and accidental product constraints).**  
+Pass: Select capacitor in the tree → SVG + 3D highlight capacitor only. Select junction in SVG → tree + mesh follow. Orbit 360° including top/bottom; selection and schematic do not reset. EJ and EC still move independently (f01 is an **output**). First screen: transmon visible, **one** hint max, `ncut` not in the primary strip. Canvas reads SOLIDWORKS-neutral, not a glowing dashboard.

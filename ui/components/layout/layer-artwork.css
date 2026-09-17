@@ -1,0 +1,12 @@
+/* Fill modes affect surfaces only: physical boundaries, traces and picking stay intact. */
+.layout-artwork [data-display="translucent"] .layer-fill { fill-opacity:.24; }
+.layout-artwork [data-display="translucent"] .layer-treatment { opacity:.16; }
+.layout-artwork [data-display="translucent"] .layer-relief { opacity:.28; }
+.layout-artwork [data-display="outline"] .layer-fill { fill:none; }
+.layout-artwork [data-display="outline"] .layer-treatment,
+.layout-artwork [data-display="outline"] .layer-relief { display:none; }
+.layout-artwork [data-display="outline"] .part-outline { stroke-opacity:.9; }
+/* A transparent/outlined film keeps the same interior target as its solid version. */
+.layout-artwork .layout-pick .part-outline { pointer-events:all; }
+.layout-artwork .layer-identifier[data-display="translucent"],
+.layout-artwork .layer-identifier[data-display="outline"] { fill:#bbd0d8; }

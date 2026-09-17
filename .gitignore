@@ -1,0 +1,30 @@
+# macOS and editor-local files
+.DS_Store
+.claude/
+
+# Python environments and generated files
+.venv/
+.venv.*/
+**/.venv/
+**/.venv.*/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+test-results/
+qutip_coeffs_*/
+
+# Node and Next.js generated files
+node_modules/
+.next/
+.next-dev/
+out/
+build/
+coverage/
+*.tsbuildinfo
+
+# Local environment and logs
+.env
+.env.*
+!.env.example
+*.log
+npm-debug.log*

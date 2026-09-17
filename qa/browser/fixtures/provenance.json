@@ -1,0 +1,9 @@
+{
+  "purpose": "Numerical fixtures for controlled React wiring tests, not live solver verification.",
+  "python": "3.12.13",
+  "sha256": {
+    "simulation/engine.py": "3aafd75b3ab08644b165cc98cc3d21903524d7b9377c9ef5b19867eb1802b1fd",
+    "simulation/requirements.txt": "a91e5ae305ca3caab667a783b03d3fca381166ade38a5b362491290caf3c1ecf",
+    "qa/browser/fixtures/solver.json": "20c7c347190937748ae35e634f1e7d31835ecc37f6b1c9067dc45720b48b887d"
+  }
+}
