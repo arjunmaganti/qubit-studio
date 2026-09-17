@@ -22,6 +22,8 @@ physical devices.
 
 In order to view a more detailed overview of the architecture, please refer to DESIGN.md.
 
+You can view the final app at: https://qubit-studio-indol.vercel.app/
+
 # Contact
 
 This project was developed for HackCMU hosted by ACM@CMU under the optimization track. If you have
