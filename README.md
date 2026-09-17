@@ -27,6 +27,6 @@ In order to view a more detailed overview of the architecture, please refer to D
 This project was developed for HackCMU hosted by ACM@CMU under the optimization track. If you have
 any questions or concerns, please send them to:
 
-Vaibhav Maddhi: vmaddhi@andrew.cmu.edu
-Arjun Maganti: amaganti@andrew.cmu.edu
+Vaibhav Maddhi: vmaddhi@andrew.cmu.edu \
+Arjun Maganti: amaganti@andrew.cmu.edu \
 Harish Senthilkumar: hsenthil@andrew.cmu.edu
